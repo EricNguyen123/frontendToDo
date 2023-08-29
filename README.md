@@ -80,3 +80,5 @@ npm install --save normalize.css
 npm i react-router-dom
 
 npm i classnames
+
+npm i @tippyjs/react
