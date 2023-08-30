@@ -6,7 +6,7 @@ import images from '~/assets/images';
 
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser, faGear } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
 const cx = classNames.bind(styles);
@@ -54,7 +54,7 @@ function Header() {
                     )}
                 >
                     <div className={cx('user', 'btn-icon')}>
-                        <FontAwesomeIcon className={cx('icon')} icon={faUser} />
+                        <FontAwesomeIcon className={cx('icon')} icon={faCircleUser} />
                     </div>
                 </Tippy>
             </div>
