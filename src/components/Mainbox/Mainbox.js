@@ -7,7 +7,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Mainbox() {
+function Mainbox({ children }) {
     const handleBars = () => {
         const bars = $('.box-menu');
         bars.css({
@@ -22,11 +22,13 @@ function Mainbox() {
             display: 'none',
         });
     };
+
     return (
         <div className={cx('wrapper', 'main-box')}>
             <div className={cx('menu-btn', 'btn-box')} onClick={handleBars}>
                 <FontAwesomeIcon className={cx('icon-bars')} icon={faBars} />
             </div>
+            {children}
         </div>
     );
 }

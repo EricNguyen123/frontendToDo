@@ -5,11 +5,11 @@ import Mainbox from '~/components/Mainbox';
 
 const cx = classNames.bind(styles);
 
-function Body() {
+function Body({ children }) {
     return (
         <div className={cx('wrapper')}>
             <Sidebar />
-            <Mainbox />
+            <Mainbox>{children}</Mainbox>
         </div>
     );
 }

@@ -5,11 +5,11 @@ import Body from '~/components/Body';
 
 const cx = classNames.bind(styles);
 
-function Home() {
+function Home({ children }) {
     return (
         <div className={cx('wrapper')}>
             <Header />
-            <Body />
+            <Body>{children}</Body>
         </div>
     );
 }

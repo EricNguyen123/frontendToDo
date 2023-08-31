@@ -18,4 +18,16 @@
         background-color: var(--bg-sidebar-hover);
     }
     height: var(--height-menu-bar);
+    padding-left: 4px;
+}
+
+.active {
+    .btn-item {
+        background-color: #efe9f7;
+        border-left: 4px solid var(--color-header);
+        padding-left: 0px;
+        p {
+            font-weight: 600;
+        }
+    }
 }
