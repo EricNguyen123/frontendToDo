@@ -23,6 +23,15 @@ function Sidebar() {
         btnBox.css({
             display: 'flex',
         });
+        const iconTitleContent = $('.icon-change');
+        iconTitleContent.css({
+            display: 'none',
+        });
+        const noteTitleContent = $('.note-change');
+        noteTitleContent.css({
+            padding: '0',
+            marginLeft: '0',
+        });
     };
 
     return (

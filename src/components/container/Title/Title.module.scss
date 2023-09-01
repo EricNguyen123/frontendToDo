@@ -1,0 +1,77 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.menu-btn {
+    width: 5%;
+    height: var(--height-menu-bar);
+    display: none;
+    align-items: center;
+    text-align: left;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    padding: 0px 5px;
+}
+
+.icon-bars,
+.icon-item-content {
+    width: max-content;
+    padding: var(--pading-menu-bars);
+    margin-left: var(--margin-left-menu-bars);
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--space-gray);
+}
+
+.icon-content {
+    width: max-content;
+    display: flex;
+    margin-right: 10px;
+}
+
+.title-header {
+    width: 95%;
+    margin-top: 16px;
+}
+
+.title-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.title-item-content {
+    width: max-content;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--black);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.note-day {
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16px;
+    padding: var(--pading-menu-bars);
+    margin-left: var(--margin-left-menu-bars);
+}
+
+.icon-end {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.icon-ellipsis {
+    width: max-content;
+    cursor: pointer;
+}

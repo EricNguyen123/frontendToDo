@@ -9,22 +9,3 @@
     flex-direction: column;
     align-items: center;
 }
-
-.menu-btn {
-    width: 100%;
-    height: var(--height-menu-bar);
-    display: none;
-    align-items: center;
-    text-align: left;
-    margin-top: 16px;
-    margin-bottom: 10px;
-}
-
-.icon-bars {
-    width: max-content;
-    padding: var(--pading-menu-bars);
-    margin-left: var(--margin-left-menu-bars);
-    cursor: pointer;
-    font-size: 20px;
-    color: var(--space-gray);
-}
