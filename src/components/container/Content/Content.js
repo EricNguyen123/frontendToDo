@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Content.module.scss';
 import Title from '../Title';
 import ListItem from '../ListItem';
+import Box from '../Box';
 
 const cx = classNames.bind(styles);
 
@@ -10,6 +11,7 @@ function Content() {
         <div className={cx('wrapper')}>
             <Title />
             <ListItem />
+            <Box />
         </div>
     );
 }

@@ -17,6 +17,7 @@
 
 .radio {
     width: max-content;
+    display: none;
 }
 
 .text {
@@ -28,5 +29,79 @@
     color: var(--black);
     &:focus {
         outline: none;
+    }
+}
+
+.baseAdd-icon {
+    width: max-content;
+    display: flex;
+    align-items: center;
+}
+
+.fluentIcon {
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--color-header);
+}
+
+.icon-custem {
+    width: max-content;
+    display: flex;
+    align-items: center;
+}
+
+.icon-custem-add {
+    display: flex;
+}
+
+.icon-custem-circle {
+    display: none;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    margin-top: 5px;
+}
+
+.item-icon {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: 1px solid var(--color-header);
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        .icon-option {
+            color: var(--white);
+        }
+        background-color: var(--color-header);
+    }
+}
+
+.btn-add {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: 1px solid var(--color-header);
+    border-radius: 5px;
+    cursor: pointer;
+    .btn-name {
+        line-height: 20px;
+        font-size: 14px;
+        color: var(--color-header);
+    }
+    &:hover {
+        .btn-name {
+            color: var(--white);
+        }
+        background-color: var(--color-header);
     }
 }
