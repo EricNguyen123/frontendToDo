@@ -49,6 +49,11 @@
     box-sizing: border-box;
 }
 
+textarea {
+    resize: none;
+    min-height: 20px;
+}
+
 html {
     font-size: 62.5%;
 }

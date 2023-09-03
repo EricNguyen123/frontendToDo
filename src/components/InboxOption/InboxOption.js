@@ -1,6 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './InboxOption.module.scss';
 import $ from 'jquery';
+import { FastField, Form, Formik } from 'formik';
+
+import Item from './Item';
+import Step from './Step';
+import Button from './Button';
+import ItemButton from './ItemButton';
+import Note from './Note';
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +28,29 @@ function InboxOption() {
     };
     return (
         <div className={cx('wrapper', 'inbox-option')}>
-            <div className={cx('header-option')}></div>
+            <div className={cx('header-option')}>
+                <div className={cx('edit-inbox')}>
+                    <Formik>
+                        {(formolprops) => {
+                            return (
+                                <Form>
+                                    <FastField name="inboxName" component={Item} />
+                                    <div className={cx('add-step')}></div>
+                                    <div className={cx('inbox-add-option')}>
+                                        <FastField name="addStep" component={Step} />
+                                        <div className={cx('btn-option')}>
+                                            {ItemButton.map((item, index) => (
+                                                <Button item={item} key={index} />
+                                            ))}
+                                        </div>
+                                        <FastField name="note" component={Note} />
+                                    </div>
+                                </Form>
+                            );
+                        }}
+                    </Formik>
+                </div>
+            </div>
             <div className={cx('footer-option')}>
                 <div className={cx('btn-footer', 'btn-out')} onClick={handleOut}>
                     <svg

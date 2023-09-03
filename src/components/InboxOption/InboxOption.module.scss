@@ -52,3 +52,22 @@
     font-size: 14px;
     color: var(--space-gray);
 }
+
+.edit-inbox,
+.inbox-add-option,
+.btn-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-option {
+    margin-top: 16px;
+}
+
+.inbox-add-option {
+    height: auto;
+    min-height: 200px;
+    overflow-y: overlay;
+}

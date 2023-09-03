@@ -1,0 +1,75 @@
+.wrapper {
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto;
+    border-top: 1px solid var(--color-header);
+    border-left: 2px solid var(--color-header);
+}
+
+.inner {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+}
+
+.baseAdd-icon-inbox-option {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fluentIcon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--color-header);
+}
+
+.icon-custem-inbox-option {
+    width: max-content;
+    display: flex;
+    align-items: center;
+}
+
+.icon-custem-add-inbox-option {
+    display: flex;
+}
+
+.icon-custem-circle-inbox-option {
+    display: none;
+}
+
+.text {
+    border: none;
+    margin-left: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--black);
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn-add-step {
+    width: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-name {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--color-header-hover);
+    margin-right: 10px;
+}

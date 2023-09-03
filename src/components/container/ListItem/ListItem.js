@@ -9,7 +9,7 @@ function ListItem() {
     return (
         <div className={cx('wrapper')}>
             <Formik>
-                {(formolPros) => {
+                {(formolProps) => {
                     return (
                         <Form>
                             <FastField name="content" component={Item} />

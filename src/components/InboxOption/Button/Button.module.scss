@@ -1,0 +1,28 @@
+.wrapper {
+    width: 96%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    color: var(--color-header-hover);
+    border: 1px solid var(--color-header-hover);
+    margin: 5px 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        color: var(--white);
+        background-color: var(--color-header-hover);
+    }
+}
+
+.icon-inbox-add {
+    width: max-content;
+    padding: 6px 10px;
+    margin-left: 16px;
+    margin-right: 10px;
+}
+
+.btn-title {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 500;
+}

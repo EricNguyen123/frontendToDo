@@ -83,9 +83,6 @@
     color: var(--space-gray);
 }
 
-.inbox-option {
-}
-
 .star,
 .icon-star {
     width: max-content;
@@ -93,10 +90,6 @@
     align-items: center;
 }
 
-.no-active {
-    display: flex;
-}
-
-.active {
+.undis {
     display: none;
 }

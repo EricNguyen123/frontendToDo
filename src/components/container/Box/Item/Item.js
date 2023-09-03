@@ -45,6 +45,26 @@ function Item() {
             backgroundColor: 'var(--bg-activ-btn)',
         });
     };
+    const handleStar = () => {
+        const active = $('.active');
+        active.css({
+            display: 'flex',
+        });
+        const noActive = $('.no-active');
+        noActive.css({
+            display: 'none',
+        });
+    };
+    const handleUnStar = () => {
+        const active = $('.active');
+        active.css({
+            display: 'none',
+        });
+        const noActive = $('.no-active');
+        noActive.css({
+            display: 'flex',
+        });
+    };
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner', 'inner-click')} onClick={handleOptionAdd}>
@@ -108,7 +128,7 @@ function Item() {
                     </div>
                 </div>
                 <div className={cx('star')}>
-                    <div className={cx('icon-star', 'no-active')}>
+                    <div className={cx('icon-star', 'no-active')} onClick={handleStar}>
                         <svg
                             className={cx('fluentIcon')}
                             fill="currentColor"
@@ -125,7 +145,7 @@ function Item() {
                             ></path>
                         </svg>
                     </div>
-                    <div className={cx('icon-star', 'active')}>
+                    <div className={cx('icon-star', 'active', 'undis')} onClick={handleUnStar}>
                         <svg
                             className={cx('fluentIcon')}
                             fill="currentColor"
