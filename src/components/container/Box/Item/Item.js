@@ -27,9 +27,27 @@ function Item() {
             display: 'none',
         });
     };
+    const handleOptionAdd = () => {
+        const options = $('.option-add');
+        options.css({
+            display: 'none',
+        });
+        const mainBox = $('.main-box');
+        mainBox.css({
+            width: '55%',
+        });
+        const inboxOption = $('.inbox-option');
+        inboxOption.css({
+            display: 'flex',
+        });
+        const innerClick = $('.inner-click');
+        innerClick.css({
+            backgroundColor: 'var(--bg-activ-btn)',
+        });
+    };
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('inner')}>
+            <div className={cx('inner', 'inner-click')} onClick={handleOptionAdd}>
                 <div className={cx('icon-checked')}>
                     <div className={cx('icon-inbox', 'icon-circle', 'icon-fig')} onClick={handleChecked}>
                         <svg

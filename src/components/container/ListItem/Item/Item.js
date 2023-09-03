@@ -20,11 +20,17 @@ function Item() {
             input.focus();
         }
     };
+    const handleOptionAdd = () => {
+        const options = $('.option-add');
+        options.css({
+            display: 'flex',
+        });
+    };
 
     return (
         <FormGroup>
             <div className={cx('wrapper')}>
-                <div className={cx('item-input')}>
+                <div className={cx('item-input')} onClick={handleOptionAdd}>
                     <div className={cx('baseAdd-icon')} onClick={handleAdd}>
                         <div className={cx('icon-custem-add', 'add')}>
                             <svg
@@ -62,7 +68,7 @@ function Item() {
                     <Input className={cx('radio')} type="radio" />
                     <Input className={cx('text', 'focus')} type="text" placeholder="Thêm tác vụ" />
                 </div>
-                <div className={cx('option')}>
+                <div className={cx('option', 'option-add')}>
                     <div className={cx('item-icon')}>
                         <svg
                             className={cx('fluentIcon', 'icon-option')}

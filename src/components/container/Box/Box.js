@@ -9,6 +9,7 @@ function Box() {
     return (
         <div className={cx('wrapper')}>
             <Item />
+            <Item />
         </div>
     );
 }
