@@ -2,58 +2,83 @@ import classNames from 'classnames/bind';
 import styles from './Item.module.scss';
 import { FormGroup, Input } from 'reactstrap';
 import $ from 'jquery';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { editNote } from '~/Redux/appSlice';
 
 const cx = classNames.bind(styles);
 
 function Item() {
+    const itemNote = useSelector((state) => state.noteSlice);
+    const dispatch = useDispatch();
     const handleChecked = () => {
-        const iconCircle = $('.icon-fig');
+        const iconCircle = $(`.icon-fig-${itemNote.id}`);
         iconCircle.css({
             display: 'none',
         });
 
-        const iconCheck = $('.icon-check');
+        const iconCheck = $(`.icon-check-${itemNote.id}`);
         iconCheck.css({
             display: 'flex',
         });
     };
     const handleUnChecked = () => {
-        const iconCircle = $('.icon-fig');
+        const iconCircle = $(`.icon-fig-${itemNote.id}`);
         iconCircle.css({
             display: 'flex',
         });
 
-        const iconCheck = $('.icon-check');
+        const iconCheck = $(`.icon-check-${itemNote.id}`);
         iconCheck.css({
             display: 'none',
         });
     };
     const handleStar = () => {
-        const active = $('.active');
+        const active = $(`.active-${itemNote.id}`);
         active.css({
             display: 'flex',
         });
-        const noActive = $('.no-active');
+        const noActive = $(`.no-active-${itemNote.id}`);
         noActive.css({
             display: 'none',
         });
     };
     const handleUnStar = () => {
-        const active = $('.active');
+        const active = $(`.active-${itemNote.id}`);
         active.css({
             display: 'none',
         });
-        const noActive = $('.no-active');
+        const noActive = $(`.no-active-${itemNote.id}`);
         noActive.css({
             display: 'flex',
         });
     };
+
+    const [value, setValue] = useState(itemNote.note);
+    useEffect(() => {
+        setValue(itemNote.note);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    useEffect(() => {
+        const element = document.getElementById(`focus-${itemNote.id}`);
+        if (element !== document.activeElement) {
+            const newNote = { note: value, id: itemNote.id };
+            const action = editNote(newNote);
+            dispatch(action);
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value]);
+
     return (
         <FormGroup>
             <div className={cx('wrapper')}>
                 <div className={cx('item-input')}>
                     <div className={cx('icon-checked')}>
-                        <div className={cx('icon-inbox', 'icon-circle', 'icon-fig')} onClick={handleChecked}>
+                        <div
+                            className={cx('icon-inbox', 'icon-circle', `icon-fig-${itemNote.id}`)}
+                            onClick={handleChecked}
+                        >
                             <svg
                                 className={cx('fluentIcon', 'icon-no-active')}
                                 fill="currentColor"
@@ -86,7 +111,7 @@ function Item() {
                             </svg>
                         </div>
 
-                        <div className={cx('icon-inbox', 'icon-check')} onClick={handleUnChecked}>
+                        <div className={cx('icon-inbox', `icon-check-${itemNote.id}`)} onClick={handleUnChecked}>
                             <svg
                                 className={cx('fluentIcon')}
                                 fill="currentColor"
@@ -106,9 +131,19 @@ function Item() {
                     </div>
 
                     <Input className={cx('radio')} type="radio" />
-                    <Input className={cx('text', 'focus')} type="textarea" draggable="false" maxLength="255" />
+                    <Input
+                        className={cx('text', `focus-${itemNote.id}`)}
+                        id={`focus-${itemNote.id}`}
+                        type="textarea"
+                        draggable="false"
+                        maxLength="255"
+                        value={value}
+                        onChange={(e) => {
+                            setValue(e.target.value);
+                        }}
+                    />
                     <div className={cx('star')}>
-                        <div className={cx('icon-star', 'no-active')} onClick={handleStar}>
+                        <div className={cx('icon-star', `no-active-${itemNote.id}`)} onClick={handleStar}>
                             <svg
                                 className={cx('fluentIcon')}
                                 fill="currentColor"
@@ -125,7 +160,7 @@ function Item() {
                                 ></path>
                             </svg>
                         </div>
-                        <div className={cx('icon-star', 'active', 'undis')} onClick={handleUnStar}>
+                        <div className={cx('icon-star', `active-${itemNote.id}`, 'undis')} onClick={handleUnStar}>
                             <svg
                                 className={cx('fluentIcon')}
                                 fill="currentColor"

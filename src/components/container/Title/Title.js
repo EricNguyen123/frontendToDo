@@ -37,10 +37,16 @@ function Title() {
         bars.css({
             display: 'flex',
         });
+        const inboxOption = $('.inbox-option');
+        const displayInboxOption = inboxOption.css('display');
         const mainBox = $('.main-box');
-        mainBox.css({
-            width: '80%',
-        });
+        displayInboxOption === 'none' || displayInboxOption === 'block'
+            ? mainBox.css({
+                  width: '80%',
+              })
+            : mainBox.css({
+                  width: '55%',
+              });
         const btnBox = $('.btn-box');
         btnBox.css({
             display: 'none',

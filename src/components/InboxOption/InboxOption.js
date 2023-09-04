@@ -8,20 +8,29 @@ import Step from './Step';
 import Button from './Button';
 import ItemButton from './ItemButton';
 import Note from './Note';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function InboxOption() {
+    const itemNote = useSelector((state) => state.noteSlice);
+
     const handleOut = () => {
         const inboxOption = $('.inbox-option');
         inboxOption.css({
             display: 'none',
         });
+        const bars = $('.box-menu');
+        const displayBars = bars.css('display');
         const mainBox = $('.main-box');
-        mainBox.css({
-            width: '80%',
-        });
-        const innerClick = $('.inner-click');
+        displayBars === 'none'
+            ? mainBox.css({
+                  width: '100%',
+              })
+            : mainBox.css({
+                  width: '80%',
+              });
+        const innerClick = $(`.inner-click-${itemNote.id}`);
         innerClick.css({
             backgroundColor: 'var(--white)',
         });

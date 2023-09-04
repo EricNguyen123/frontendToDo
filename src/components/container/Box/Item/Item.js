@@ -1,28 +1,31 @@
 import classNames from 'classnames/bind';
 import styles from './Item.module.scss';
 import $ from 'jquery';
+import { useDispatch } from 'react-redux';
+import { newNote } from '~/Redux/noteSlice';
 
 const cx = classNames.bind(styles);
 
-function Item() {
+function Item({ note, id }) {
+    const dispatch = useDispatch();
     const handleChecked = () => {
-        const iconCircle = $('.icon-fig');
+        const iconCircle = $(`.icon-fig-${id}`);
         iconCircle.css({
             display: 'none',
         });
 
-        const iconCheck = $('.icon-check');
+        const iconCheck = $(`.icon-check-${id}`);
         iconCheck.css({
             display: 'flex',
         });
     };
     const handleUnChecked = () => {
-        const iconCircle = $('.icon-fig');
+        const iconCircle = $(`.icon-fig-${id}`);
         iconCircle.css({
             display: 'flex',
         });
 
-        const iconCheck = $('.icon-check');
+        const iconCheck = $(`.icon-check-${id}`);
         iconCheck.css({
             display: 'none',
         });
@@ -32,44 +35,60 @@ function Item() {
         options.css({
             display: 'none',
         });
+        const bars = $('.box-menu');
+        const displayBars = bars.css('display');
         const mainBox = $('.main-box');
-        mainBox.css({
-            width: '55%',
-        });
+        displayBars === 'none'
+            ? mainBox.css({
+                  width: '75%',
+              })
+            : mainBox.css({
+                  width: '55%',
+              });
         const inboxOption = $('.inbox-option');
         inboxOption.css({
             display: 'flex',
         });
-        const innerClick = $('.inner-click');
+        const innerReset = $('.inner-reset');
+        innerReset.css({
+            backgroundColor: 'var(--white)',
+        });
+        const innerClick = $(`.inner-click-${id}`);
         innerClick.css({
             backgroundColor: 'var(--bg-activ-btn)',
         });
+
+        const itemNote = { note: note, id: id };
+
+        const action = newNote(itemNote);
+
+        dispatch(action);
     };
     const handleStar = () => {
-        const active = $('.active');
+        const active = $(`.active-${id}`);
         active.css({
             display: 'flex',
         });
-        const noActive = $('.no-active');
+        const noActive = $(`.no-active-${id}`);
         noActive.css({
             display: 'none',
         });
     };
     const handleUnStar = () => {
-        const active = $('.active');
+        const active = $(`.active-${id}`);
         active.css({
             display: 'none',
         });
-        const noActive = $('.no-active');
+        const noActive = $(`.no-active-${id}`);
         noActive.css({
             display: 'flex',
         });
     };
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('inner', 'inner-click')} onClick={handleOptionAdd}>
+            <div className={cx('inner', 'inner-reset', `inner-click-${id}`)} onClick={handleOptionAdd}>
                 <div className={cx('icon-checked')}>
-                    <div className={cx('icon-inbox', 'icon-circle', 'icon-fig')} onClick={handleChecked}>
+                    <div className={cx('icon-inbox', 'icon-circle', `icon-fig-${id}`)} onClick={handleChecked}>
                         <svg
                             className={cx('fluentIcon', 'icon-no-active')}
                             fill="currentColor"
@@ -102,7 +121,7 @@ function Item() {
                         </svg>
                     </div>
 
-                    <div className={cx('icon-inbox', 'icon-check')} onClick={handleUnChecked}>
+                    <div className={cx('icon-inbox', `icon-check-${id}`)} onClick={handleUnChecked}>
                         <svg
                             className={cx('fluentIcon')}
                             fill="currentColor"
@@ -121,14 +140,14 @@ function Item() {
                     </div>
                 </div>
                 <div className={cx('inbox-content')}>
-                    <p className={cx('content')}>a</p>
+                    <p className={cx('content')}>{note}</p>
                     <div className={cx('inbox-title')}>
                         <span className={cx('title')}>Tác vụ</span>
                         <div className={cx('inbox-option')}></div>
                     </div>
                 </div>
                 <div className={cx('star')}>
-                    <div className={cx('icon-star', 'no-active')} onClick={handleStar}>
+                    <div className={cx('icon-star', `no-active-${id}`)} onClick={handleStar}>
                         <svg
                             className={cx('fluentIcon')}
                             fill="currentColor"
@@ -145,7 +164,7 @@ function Item() {
                             ></path>
                         </svg>
                     </div>
-                    <div className={cx('icon-star', 'active', 'undis')} onClick={handleUnStar}>
+                    <div className={cx('icon-star', `active-${id}`, 'undis')} onClick={handleUnStar}>
                         <svg
                             className={cx('fluentIcon')}
                             fill="currentColor"

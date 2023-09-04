@@ -15,10 +15,17 @@ function Sidebar() {
         bars.css({
             display: 'none',
         });
+        const inboxOption = $('.inbox-option');
+        const displayInboxOption = inboxOption.css('display');
+
         const mainBox = $('.main-box');
-        mainBox.css({
-            width: '100%',
-        });
+        displayInboxOption === 'none' || displayInboxOption === 'block'
+            ? mainBox.css({
+                  width: '100%',
+              })
+            : mainBox.css({
+                  width: '75%',
+              });
         const btnBox = $('.btn-box');
         btnBox.css({
             display: 'flex',

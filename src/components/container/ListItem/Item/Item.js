@@ -2,10 +2,14 @@ import classNames from 'classnames/bind';
 import styles from './Item.module.scss';
 import { FormGroup, Input } from 'reactstrap';
 import $ from 'jquery';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNote } from '~/Redux/appSlice';
 
 const cx = classNames.bind(styles);
 
 function Item() {
+    //handles
     const handleAdd = () => {
         const add = $('.add');
         add.css({
@@ -25,6 +29,17 @@ function Item() {
         options.css({
             display: 'flex',
         });
+    };
+
+    //handles logic
+
+    const [value, setValue] = useState('');
+    const dispatch = useDispatch();
+
+    const handleAddNote = () => {
+        const action = addNote(value);
+        dispatch(action);
+        setValue('');
     };
 
     return (
@@ -66,7 +81,15 @@ function Item() {
                         </div>
                     </div>
                     <Input className={cx('radio')} type="radio" />
-                    <Input className={cx('text', 'focus')} type="text" placeholder="Thêm tác vụ" />
+                    <Input
+                        className={cx('text', 'focus')}
+                        type="text"
+                        value={value}
+                        onChange={(e) => {
+                            setValue(e.target.value);
+                        }}
+                        placeholder="Thêm tác vụ"
+                    />
                 </div>
                 <div className={cx('option', 'option-add')}>
                     <div className={cx('item-icon')}>
@@ -117,7 +140,7 @@ function Item() {
                             ></path>
                         </svg>
                     </div>
-                    <div className={cx('btn-add')}>
+                    <div className={cx('btn-add')} onClick={handleAddNote}>
                         <span className={cx('btn-name')}>Thêm</span>
                     </div>
                 </div>
