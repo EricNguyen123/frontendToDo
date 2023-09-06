@@ -5,11 +5,14 @@ import $ from 'jquery';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { editNote } from '~/Redux/appSlice';
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
 function Item() {
     const itemNote = useSelector((state) => state.noteSlice);
+    const id = window.localStorage.getItem('id');
+
     const dispatch = useDispatch();
     const handleChecked = () => {
         const iconCircle = $(`.icon-fig-${itemNote.id}`);
@@ -53,22 +56,23 @@ function Item() {
             display: 'flex',
         });
     };
-
+    const [height, setHeight] = useState('auto');
     const [value, setValue] = useState(itemNote.note);
+    const debounce = useDebounce(value, 800);
     useEffect(() => {
-        setValue(itemNote.note);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    useEffect(() => {
-        const element = document.getElementById(`focus-${itemNote.id}`);
-        if (element !== document.activeElement) {
-            const newNote = { note: value, id: itemNote.id };
-            const action = editNote(newNote);
-            dispatch(action);
+        if (Number(id) === itemNote.id) {
+            setValue(itemNote.note);
         }
+        window.localStorage.removeItem('id');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
+    useEffect(() => {
+        const newNote = { note: debounce, id: itemNote.id };
+        const action = editNote(newNote);
+        dispatch(action);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value]);
+    }, [debounce]);
 
     return (
         <FormGroup>
@@ -140,7 +144,13 @@ function Item() {
                         value={value}
                         onChange={(e) => {
                             setValue(e.target.value);
+                            const { scrollHeight } = e.target;
+
+                            console.log(scrollHeight);
+
+                            setHeight(`${scrollHeight}px`);
                         }}
+                        style={{ height: height }}
                     />
                     <div className={cx('star')}>
                         <div className={cx('icon-star', `no-active-${itemNote.id}`)} onClick={handleStar}>

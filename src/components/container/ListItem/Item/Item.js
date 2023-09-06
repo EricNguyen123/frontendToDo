@@ -37,8 +37,10 @@ function Item() {
     const dispatch = useDispatch();
 
     const handleAddNote = () => {
-        const action = addNote(value);
-        dispatch(action);
+        if (value !== '') {
+            const action = addNote(value);
+            dispatch(action);
+        }
         setValue('');
     };
 

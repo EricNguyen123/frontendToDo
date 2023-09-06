@@ -59,10 +59,10 @@ function Item({ note, id }) {
         });
 
         const itemNote = { note: note, id: id };
-
         const action = newNote(itemNote);
-
         dispatch(action);
+
+        window.localStorage.setItem('id', id);
     };
     const handleStar = () => {
         const active = $(`.active-${id}`);
